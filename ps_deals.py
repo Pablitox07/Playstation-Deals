@@ -26,7 +26,7 @@ def get_deals():
         prices = page_all_disc.find_all(name="span", class_="psw-m-r-3")
         names = page_all_disc.find_all(name="span", class_="psw-t-body psw-c-t-1 psw-t-truncate-2 psw-m-b-2")
 
-        names_temp = [x.getText() for x in names]
+        names_temp = [x.getText().encode('ascii', 'ignore')  for x in names]
         prices_temp = [x.getText() for x in prices[0:len(names_temp)]]
 
         Discounts["Names"].extend(names_temp)
